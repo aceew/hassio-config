@@ -66,6 +66,7 @@ tts:
 # Cloud
 cloud:
 
+# TODO: Excluded from repo for obvious reasons, but need to find a way to deploy this file to the Pi with the rest of the config
 zone: !include zones.yaml
 
 group: !include groups.yaml
