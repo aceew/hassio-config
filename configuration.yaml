@@ -64,6 +64,9 @@ tts:
 # Cloud
 cloud:
 
+device_tracker:
+  - platform: owntracks_http
+
 # TODO: Excluded from repo for obvious reasons, but need to find a way to deploy this file to the Pi with the rest of the config
 zone: !include zones.yaml
 
