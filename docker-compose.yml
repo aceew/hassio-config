@@ -1,0 +1,39 @@
+version: '3.2'
+
+services:
+  home-assistant:
+    image: homeassistant/raspberrypi3-homeassistant
+    network_mode: host
+    ports:
+      - 80:80
+    volumes:
+      - /var/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+
+  duckdns:
+    image: lsioarmhf/duckdns
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - TOKEN=${DUCKDNS_TOKEN}
+      - SUBDOMAINS=aceew.duckdns.org
+
+  letsencrypt:
+    image: lsioarmhf/letsencrypt
+    cap_add:
+      - NET_ADMIN
+    restart: always
+    environment:
+      - EMAIL=${LETS_ENCRYPT_EMAIL}
+      - URL=aceew.duckdns.org
+      - VALIDATION=http
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/homeassistant/letsencrypt:/config
+

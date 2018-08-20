@@ -1,7 +1,7 @@
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets4729
+  # Location required to calculate the time the sun rises and sets
   latitude: !secret home_lat
   longitude: !secret home_long
   # Impacts weather/sunrise data (altitude above sea level in meters)
@@ -22,9 +22,9 @@ config:
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
-  base_url: https://aceew.duckdns.org
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  base_url: https://aceew.duckdns.org/
+  ssl_certificate: /config/letsencrypt/etc/letsencrypt/live/aceew.duckdns.org/fullchain.pem
+  ssl_key: /config/letsencrypt/etc/letsencrypt/live/aceew.duckdns.org/privkey.pem
 
 # Checks for available updates
 # Note: This component will send some information about your system to
